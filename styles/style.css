@@ -17,12 +17,13 @@
   --dark-color: rgb(24, 24, 24);
   --medium-color: rgb(32, 32, 32);
   --light-color: rgb(147, 147, 147);
+  --button-color: #23b2fe;
 
   --dark-color-code: 24, 24, 24;
   --medium-color-code: 32, 32, 32;
   --light-color-code: 152, 152, 152;
 
-  --button-color: #23b2fe;
+  --border-width: 0.5px;
 }
 
 html,
@@ -48,7 +49,7 @@ header {
   justify-content: space-around;
 
   padding: 1rem 0;
-  border-bottom: 0.5px solid var(--light-color);
+  border-bottom: var(--border-width) solid var(--light-color);
   background-color: var(--dark-color);
 }
 

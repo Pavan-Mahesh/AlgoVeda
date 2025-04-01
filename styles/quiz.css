@@ -4,6 +4,10 @@ main.quiz-container {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 3rem 10rem;
+
+  border-collapse: collapse;
 }
 
 section.quiz-navigator {
@@ -15,7 +19,10 @@ section.quiz-navigator {
   align-items: center;
 
   background-color: var(--dark-color);
-  border-right: 0.5px solid var(--light-color);
+  border: var(--border-width) solid var(--light-color);
+
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
 section.quiz-navigator .current-level {
@@ -74,4 +81,10 @@ section.quiz-body {
   flex: 0.8;
 
   background-color: var(--medium-color);
+
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+
+  border: var(--border-width) solid var(--light-color);
+  border-left: none;
 }
