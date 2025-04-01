@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jersey 10", sans-serif;
+}
+
+:root {
+  --nav-height: 15vh;
+
+  --dark-color: rgb(24, 24, 24);
+  --light-color: rgb(147, 147, 147);
+
+  --dark-color-code: 24, 24, 24;
+  --light-color-code: 147, 147, 147;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  background-image: url(../assets/background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+nav {
+  width: 100%;
+  height: var(--nav-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 2.5vh 0;
+  border-block: 1px solid var(--light-color);
+  background-color: var(--dark-color);
+}
+
+nav img {
+  height: 100%;
+}
+
+main {
+  /* main height = total - nav height */
+  height: calc(100vh - var(--nav-height));
+}
