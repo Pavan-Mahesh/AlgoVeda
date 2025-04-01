@@ -6,9 +6,8 @@ main.login-container {
 }
 
 h1 {
-  color: white;
   font-weight: normal;
-  font-size: 4rem;
+  font-size: var(--fs-xl);
 
   margin-bottom: 1.5rem;
 }
@@ -27,8 +26,7 @@ form.login {
 }
 
 form.login h2 {
-  color: white;
-  font-size: 2.2rem;
+  font-size: var(--fs-lg);
   font-weight: normal;
 
   margin-bottom: 1rem;
@@ -37,7 +35,7 @@ form.login h2 {
 form.login input {
   width: 240px;
 
-  font-size: 1.25rem;
+  font-size: var(--fs-md);
 
   padding: 0.5em 1em;
   border: none;
@@ -45,7 +43,8 @@ form.login input {
 }
 
 form.login button {
-  font-size: 1.25rem;
+  color: black;
+  font-size: var(--fs-md);
   border: none;
   border-radius: 0.2em;
   padding: 0.3em 1.2em;
