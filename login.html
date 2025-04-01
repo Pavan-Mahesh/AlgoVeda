@@ -23,7 +23,7 @@
       <img src="./assets/IEEE-CS_LogoTM-white@2x.png" alt="ieee-cs" />
     </nav>
 
-    <main>
+    <main class="login-container">
       <h1>AlgoVedha</h1>
       <form class="login">
         <h2>Login</h2>
@@ -54,5 +54,26 @@
         <button>Login</button>
       </form>
     </main>
+
+    <script>
+      const inputFields = document.querySelectorAll("form.login input");
+
+      document
+        .querySelector("form.login button")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          if (
+            inputFields[0].value === "WebDev" &&
+            inputFields[1].value === "Hemanth" &&
+            inputFields[2].value === "Pavan" &&
+            inputFields[3].value === "Mahesh"
+          ) {
+            console.log("in if");
+            window.location.replace("/quiz.html");
+          } else {
+            console.log("in else");
+          }
+        });
+    </script>
   </body>
 </html>
