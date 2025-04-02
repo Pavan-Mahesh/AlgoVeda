@@ -13,15 +13,17 @@ h1 {
 }
 
 form.login {
+  height: max-content;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  gap: 1.25rem;
 
   background-color: rgba(var(--dark-color-code), 0.8);
-  backdrop-filter: opacity(50%);
-  padding: 2em 3.2em;
   border-radius: 1rem;
+  padding: 2rem 3rem;
   backdrop-filter: blur(1px);
 }
 
@@ -29,7 +31,7 @@ form.login h2 {
   font-size: var(--fs-lg);
   font-weight: normal;
 
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 form.login input {
@@ -37,7 +39,7 @@ form.login input {
 
   font-size: var(--fs-md);
 
-  padding: 0.5em 1em;
+  padding: 0.35em 0.7em;
   border: none;
   border-radius: 0.3em;
 }
@@ -49,5 +51,5 @@ form.login button {
   border-radius: 0.2em;
   padding: 0.3em 1.2em;
 
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 }

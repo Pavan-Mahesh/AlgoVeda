@@ -7,10 +7,15 @@
 }
 
 :root {
-  --fs-sm: clamp(0.875rem, 1.5vw, 1rem);
+  /* --fs-sm: clamp(0.875rem, 1.5vw, 1rem);
   --fs-md: clamp(1rem, 2vw, 1.25rem);
   --fs-lg: clamp(1.5rem, 3vw, 2rem);
-  --fs-xl: clamp(2rem, 5vw, 3rem);
+  --fs-xl: clamp(2rem, 5vw, 3rem); */
+
+  --fs-sm: clamp(0.875rem, 1.2vw, 2rem);
+  --fs-md: clamp(1rem, 1.5vw, 2.5rem);
+  --fs-lg: clamp(1.5rem, 2.4vw, 4rem);
+  --fs-xl: clamp(2rem, 4.4vw, 6rem);
 
   --header-height: 12vh;
 
@@ -48,7 +53,7 @@ header {
   align-items: center;
   justify-content: space-around;
 
-  padding: 1rem 0;
+  padding: 2vh 0;
   border-bottom: var(--border-width) solid var(--light-color);
   background-color: var(--dark-color);
 }
