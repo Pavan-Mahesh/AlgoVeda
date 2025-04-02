@@ -23,6 +23,7 @@ form.login {
 
   background-color: rgba(var(--dark-color-code), 0.8);
   border-radius: 1rem;
+  border: 1.5px solid var(--light-color);
   padding: 2rem 3rem;
   backdrop-filter: blur(1px);
 }
@@ -37,9 +38,10 @@ form.login h2 {
 form.login input {
   width: 240px;
 
+  color: black;
   font-size: var(--fs-md);
 
-  padding: 0.35em 0.7em;
+  padding: 0.3em 0.7em;
   border: none;
   border-radius: 0.3em;
 }
