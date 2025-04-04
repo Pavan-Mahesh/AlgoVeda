@@ -138,3 +138,27 @@ section.quiz-instruction {
   border-radius: 0.5rem;
   border: var(--border-width) solid var(--light-color);
 }
+
+section.quiz-instruction .current-level {
+  width: 100%;
+    text-align: center;
+    font-size: var(--fs-md);
+    padding: 1rem 0;
+    border-bottom: 0.5px solid var(--light-color);
+}
+
+
+.level7 { 
+  font-size: var(--fs-md);
+  border: var(--border-width) solid var(--light-color);
+  border-radius: 0.2em;
+  padding: 0.3em 1.2em;
+  margin-top: 8rem;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+   
+}
