@@ -29,26 +29,31 @@
           <div>Level: 1</div>
           <div>Pattern Recognization</div>
         </div>
+
         <div class="navigation-buttons">
-          <button id="q1" class="current-question">1</button>
+          <button id="q1">1</button>
           <button id="q2">2</button>
           <button id="q3">3</button>
           <button id="q4">4</button>
           <button id="q5">5</button>
         </div>
+
         <div class="action-buttons">
           <button id="save">
             <img src="./assets/action-buttons/blue.png" alt="" />
             <span>Save</span>
           </button>
+
           <button id="next">
             <img src="./assets/action-buttons/yellow.png" />
             <span>Next</span>
           </button>
+
           <button id="save-next">
             <img src="./assets/action-buttons/blue-check.png" />
             <span>Save & Next</span>
           </button>
+
           <button id="save-next">
             <img src="./assets/action-buttons/green-check.png" />
             <span>Submit</span>
@@ -56,7 +61,15 @@
         </div>
       </section>
 
-      <section class="quiz-body"></section>
+      <section class="quiz-body">
+        <div id="question"></div>
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <input type="checkbox" id="answer" />
+          <label for="answer">Answered</label>
+        </div>
+      </section>
     </main>
+
+    <script src="./scripts/quiz.js"></script>
   </body>
 </html>

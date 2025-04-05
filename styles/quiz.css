@@ -41,7 +41,6 @@ section.quiz-navigator .navigation-buttons {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  /* gap: 1%; */
 
   margin-top: 0.5rem;
 }
@@ -57,6 +56,7 @@ section.quiz-navigator .navigation-buttons > button {
 }
 
 .current-question {
+  background-color: var(--button-color);
   outline: 3px solid white;
   outline-offset: 3px;
 }
@@ -75,11 +75,9 @@ section.quiz-navigator .action-buttons {
 
 section.quiz-navigator .action-buttons > button {
   flex: 1;
-  /* flex-basis: max-content; */
 
   display: flex;
   align-items: center;
-  /* justify-content: center; */
 
   font-size: var(--fs-sm);
   padding: 0.35em 0.7em;
@@ -100,6 +98,11 @@ section.quiz-body {
   height: 100%;
   flex: 0.7;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   background-color: var(--medium-color);
 
   border-top-right-radius: 0.5rem;
@@ -107,4 +110,11 @@ section.quiz-body {
 
   border: var(--border-width) solid var(--light-color);
   border-left: none;
+
+  font-size: var(--fs-md);
+}
+
+section.quiz-body #question {
+  max-width: 80%;
+  margin-bottom: 0.8rem;
 }
