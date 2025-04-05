@@ -27,9 +27,8 @@ const questions = [
 ];
 
 const colors = {
-  current: "#23b2fe",
-  notAnswered: "#f44336",
-  answered: "#4caf50",
+  notAnswered: "#ff5f5f",
+  answered: "#3dbe78",
 };
 
 let prevQuestionIdx = null;
@@ -45,6 +44,8 @@ const answerElem = quizBody.querySelector("#answer");
 
 navigationBtnList.forEach((navBtn, idx) => {
   navBtn.addEventListener("click", () => {
+    if (currQuestionIdx === idx) return;
+
     prevQuestionIdx = currQuestionIdx;
     currQuestionIdx = idx;
     changeQuestion();
@@ -64,7 +65,6 @@ function changeQuestion() {
   }
 
   navigationBtnList[currQuestionIdx].classList.add("current-question");
-  navigationBtnList[currQuestionIdx].style.backgroundColor = colors.current;
 
   questionElem.textContent = `
     ${questions[currQuestionIdx].id}. ${questions[currQuestionIdx].question}

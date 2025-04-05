@@ -56,7 +56,6 @@ section.quiz-navigator .navigation-buttons > button {
 }
 
 .current-question {
-  background-color: var(--button-color);
   outline: 3px solid white;
   outline-offset: 3px;
 }
