@@ -39,13 +39,13 @@
         </div>
 
         <div class="action-buttons">
-          <button id="save">
-            <img src="./assets/action-buttons/blue.png" alt="" />
-            <span>Save</span>
+          <button id="previous">
+            <img src="./assets/action-buttons/yellow.png" alt="" />
+            <span>Previous</span>
           </button>
 
           <button id="next">
-            <img src="./assets/action-buttons/yellow.png" />
+            <img src="./assets/action-buttons/blue.png" />
             <span>Next</span>
           </button>
 
@@ -54,7 +54,7 @@
             <span>Save & Next</span>
           </button>
 
-          <button id="save-next">
+          <button id="submit">
             <img src="./assets/action-buttons/green-check.png" />
             <span>Submit</span>
           </button>
@@ -62,17 +62,17 @@
       </section>
 
       <section class="quiz-body">
-        <div id="question"></div>
-        <div style="display: flex; align-items: center; gap: 0.5rem">
-          <input type="checkbox" id="answer" />
-          <label for="answer">Answered</label>
+        <div id="q-number">1.</div>
+        <div>
+          <div id="question"></div>
+          <input type="text" id="answer" placeholder="Answer" />
         </div>
       </section>
     </main>
 
-    <div class="info-icon">
+    <button class="info-icon">
       <img src="./assets/info.png" alt="info" />
-    </div>
+    </button>
 
     <script src="./scripts/quiz.js"></script>
   </body>

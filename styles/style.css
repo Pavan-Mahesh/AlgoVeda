@@ -66,3 +66,17 @@ main {
   /* main height = total - nav height */
   height: calc(100vh - var(--header-height));
 }
+
+button {
+  cursor: pointer;
+  transition: transform 150ms;
+  will-change: transform;
+}
+
+button:hover {
+  transform: scale(0.95);
+}
+
+button:active {
+  transform: scale(0.9);
+}
