@@ -1,11 +1,11 @@
 const instructionsPopover = document.getElementById("instructions-popover");
 
-const quizBody = document.querySelector("section.quiz-body");
-const qNumberElem = quizBody.querySelector("#q-number");
-
-const qaContainer = quizBody.querySelector(".q-a-container");
-const questionElem = qaContainer.querySelector("#question");
-const answerElem = qaContainer.querySelector("#answer");
+const levelNumb = document.querySelector(
+  "section.quiz-navigator .current-level #number"
+);
+const levelName = document.querySelector(
+  "section.quiz-navigator .current-level #name"
+);
 
 const navigationBtnList = document.querySelectorAll(
   "section.quiz-navigator .navigation-buttons > button"
@@ -19,35 +19,14 @@ const nextBtn = actionBtns.querySelector("#next");
 const saveNextBtn = actionBtns.querySelector("#save-next");
 const submitBtn = actionBtns.querySelector("#submit");
 
-const questions = [
-  {
-    id: "1",
-    question: `Find the missing number: <br /> 7, 14, 28, 56, ?, 224`,
-    answer: "112",
-  },
-  {
-    id: "2",
-    question: `Find the next number: <br /> 3, 6, 11, 18, 27, ?`,
-    answer: "38",
-  },
-  {
-    id: "3",
-    question: `What comes next? <br /> 2, 6, 12, 20, 30, ?`,
-    answer: "42",
-  },
-  {
-    id: "4",
-    question: `Which number doesn't fit? <br /> 11, 13, 17, 19, 21, 23`,
-    answer: "21",
-  },
-  {
-    id: "5",
-    question: `Alphanumeric Pattern <br /> Z1, X4, V9, T16, ?`,
-    answer: "R25",
-  },
-];
+const quizBody = document.querySelector("section.quiz-body");
+const qNumberElem = quizBody.querySelector("#q-number");
 
-const userAnswers = new Array(questions.length).fill("");
+const qaContainer = quizBody.querySelector(".q-a-container");
+const questionElem = qaContainer.querySelector("#question");
+const answerElem = qaContainer.querySelector("#answer");
+
+// some default values
 
 const colors = {
   notAnswered: "linear-gradient(135deg, #e7410c, #9b1606)",
@@ -56,11 +35,15 @@ const colors = {
 
 // Actual implementation starts
 
+let userAnswers = new Array(questions.length).fill("");
+
+let currentLevelIdx = 0;
+
 let prevQuestionIdx = null;
 let currQuestionIdx = 0;
 
 instructionsPopover.showPopover();
-changeQuestion();
+changeLevel();
 
 previousBtn.disabled = true;
 saveNextBtn.disabled = true;
@@ -110,12 +93,19 @@ saveNextBtn.addEventListener("click", () => {
 submitBtn.addEventListener("click", () => {
   let correct = 0;
   for (let idx = 0; idx < questions.length; idx++) {
-    if (questions[idx].answer === userAnswers[idx]) correct++;
+    if (
+      questions[idx].answer.toLowerCase().trim() ===
+      userAnswers[idx].toLowerCase().trim()
+    ) {
+      correct++;
+    }
   }
 
   console.log(correct);
   if (correct === questions.length) {
     alert("To the next level");
+    currentLevelIdx++;
+    changeLevel();
   } else {
     alert("All answers should be correct");
   }
@@ -164,10 +154,29 @@ function changeQuestion() {
   previousBtn.disabled = currQuestionIdx === 0;
   nextBtn.disabled = currQuestionIdx === questions.length - 1;
 
-  qNumberElem.textContent = questions[currQuestionIdx].id + ".";
+  qNumberElem.textContent = currQuestionIdx + 1 + ".";
   questionElem.innerHTML = questions[currQuestionIdx].question;
   answerElem.value = userAnswers[currQuestionIdx];
 
   saveNextBtn.disabled = true;
   qaContainer.style.setProperty("--answer-status", "");
+}
+
+function changeLevel() {
+  levelNumb.textContent = `Level: ${levels[currentLevelIdx].level}`;
+  levelName.textContent = `${levels[currentLevelIdx].name}`;
+
+  navigationBtnList[currQuestionIdx].classList.remove("current-question");
+
+  prevQuestionIdx = null;
+  currQuestionIdx = 0;
+  changeQuestion();
+
+  navigationBtnList.forEach((btn) => {
+    btn.style.background = "#23b2fe";
+  });
+
+  userAnswers = new Array(questions.length).fill("");
+  answerElem.value = "";
+  submitBtn.disabled = true;
 }
