@@ -70,9 +70,71 @@
       </section>
     </main>
 
-    <button class="info-icon">
+    <!-- popover elements -->
+
+    <button
+      class="info-icon"
+      popovertarget="instructions-popover"
+      popovertargetaction="show"
+    >
       <img src="./assets/info.png" alt="info" />
     </button>
+
+    <section class="instructions" id="instructions-popover" popover="manual">
+      <div class="instructions-container">
+        <h1>Instructions</h1>
+        <ol>
+          <li>
+            Each level contains five questions, all of which must be attempted.
+          </li>
+
+          <li>
+            After answering each question, click the 'Save' button to ensure
+            your response is recorded and click 'Submit' after completing the
+            5th question of each level.
+          </li>
+
+          <li>
+            You must complete all five questions in a level to unlock the next
+            level.
+          </li>
+
+          <li>
+            Progression to the final Code Competition round is allowed only
+            after successfully completing all six levels.
+          </li>
+
+          <li>
+            In Level 3: Error Detection, analyze the code snippet and enter the
+            incorrect line or error string in the provided text box.
+          </li>
+
+          <li>
+            In Level 4: Code Completion, fill in the blanks with the appropriate
+            code or keywords to generate the expected output.
+          </li>
+
+          <li>
+            Do not refresh or reload the website at any point during the
+            competition.
+          </li>
+
+          <li>
+            The use of AI tools, online compilers, or any external assistance is
+            strictly prohibited and will be considered malpractice.
+          </li>
+
+          <li>
+            Participants are expected to maintain honesty and integrity, all
+            responses must be original.
+          </li>
+        </ol>
+      </div>
+
+      <button popovertarget="instructions-popover" popovertargetaction="hide">
+        <img src="./assets/close.png" alt="close" />
+      </button>
+    </section>
 
     <script src="./scripts/quiz.js"></script>
   </body>

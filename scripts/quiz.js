@@ -38,12 +38,12 @@ const questions = [
   },
   {
     id: "5",
-    question: `Alphanumeric Pattern <br /> 24. Z1, X4, V9, T16, ?`,
+    question: `Alphanumeric Pattern <br /> Z1, X4, V9, T16, ?`,
     answer: "R25",
   },
 ];
 
-const userAnswers = [];
+const userAnswers = new Array(questions.length).fill("");
 
 const colors = {
   notAnswered: "linear-gradient(135deg, #e7410c, #9b1606)",
@@ -123,5 +123,5 @@ function changeQuestion() {
 
   qNumberElem.textContent = questions[currQuestionIdx].id + ".";
   questionElem.innerHTML = questions[currQuestionIdx].question;
-  answerElem.value = userAnswers[currQuestionIdx] || "";
+  answerElem.value = userAnswers[currQuestionIdx];
 }
