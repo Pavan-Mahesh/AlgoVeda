@@ -62,8 +62,9 @@ let currQuestionIdx = 0;
 instructionsPopover.showPopover();
 changeQuestion();
 
-disableBtn(saveNextBtn);
-disableBtn(submitBtn);
+previousBtn.disabled = true;
+saveNextBtn.disabled = true;
+submitBtn.disabled = true;
 
 // navigation buttons
 
@@ -81,10 +82,10 @@ navigationBtnList.forEach((navBtn, idx) => {
 
 answerElem.addEventListener("input", () => {
   if (answerElem.value) {
-    enableBtn(saveNextBtn);
+    saveNextBtn.disabled = false;
     qaContainer.style.setProperty("--answer-status", '"(changes not saved)*"');
   } else {
-    disableBtn(saveNextBtn);
+    saveNextBtn.disabled = true;
   }
 });
 
@@ -102,7 +103,7 @@ saveNextBtn.addEventListener("click", () => {
   saveNextAction();
 
   if (!userAnswers.includes("")) {
-    enableBtn(submitBtn);
+    submitBtn.disabled = false;
   }
 });
 
@@ -151,18 +152,6 @@ function saveNextAction() {
   }
 }
 
-function disableBtn(btn) {
-  btn.style.opacity = "0.5";
-  btn.style.cursor = "not-allowed";
-  btn.disabled = true;
-}
-
-function enableBtn(btn) {
-  btn.style.opacity = "1";
-  btn.style.cursor = "default";
-  btn.disabled = false;
-}
-
 function changeQuestion() {
   if (prevQuestionIdx !== null) {
     navigationBtnList[prevQuestionIdx].classList.remove("current-question");
@@ -172,10 +161,13 @@ function changeQuestion() {
   }
   navigationBtnList[currQuestionIdx].classList.add("current-question");
 
+  previousBtn.disabled = currQuestionIdx === 0;
+  nextBtn.disabled = currQuestionIdx === questions.length - 1;
+
   qNumberElem.textContent = questions[currQuestionIdx].id + ".";
   questionElem.innerHTML = questions[currQuestionIdx].question;
   answerElem.value = userAnswers[currQuestionIdx];
 
-  disableBtn(saveNextBtn);
+  saveNextBtn.disabled = true;
   qaContainer.style.setProperty("--answer-status", "");
 }

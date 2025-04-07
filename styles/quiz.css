@@ -112,9 +112,8 @@ section.quiz-body {
   border-left: none;
 
   /* --fs-md: clamp(1rem, 1.5vw, 2.5rem);
-  --fs-lg: clamp(1.5rem, 2.4vw, 4rem); */
-
-  --quiz-body-fs: clamp(1.25rem, 2vw, 3.25rem);
+  /* increment by 10% */
+  --quiz-body-fs: clamp(1.1rem, 1.65vw, 2.75rem);
 
   padding: 1em;
   font-size: var(--quiz-body-fs);
@@ -136,7 +135,7 @@ section.quiz-body .q-a-container {
   &::after {
     content: var(--answer-status);
     display: block;
-    font-size: 0.5em;
+    font-size: 0.65em;
     width: max-content;
   }
 }
