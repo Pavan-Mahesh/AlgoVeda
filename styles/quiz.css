@@ -12,7 +12,7 @@ main.quiz-container {
 
 section.quiz-navigator {
   height: 100%;
-  flex: 0.3;
+  width: 30%;
 
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@ section.quiz-navigator .action-buttons {
   width: 100%;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   grid-template-rows: repeat(2, max-content);
   gap: 1rem;
 
@@ -97,7 +97,7 @@ section.quiz-navigator .action-buttons > button img {
 
 section.quiz-body {
   height: 100%;
-  flex: 0.7;
+  width: 70%;
 
   display: flex;
   align-items: start;
@@ -122,18 +122,42 @@ section.quiz-body {
 
 section.quiz-body #q-number {
   width: 1ch;
+  padding-top: 0.5em;
 }
 
-section.quiz-body #question {
+section.quiz-body .q-a-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  --answer-status: "";
+  &::after {
+    content: var(--answer-status);
+    display: block;
+    font-size: 0.5em;
+    width: max-content;
+  }
+}
+
+section.quiz-body .q-a-container #question {
+  min-height: 50%;
+  overflow-y: auto;
+
+  padding: 0.5em;
+  border: var(--border-width) solid var(--light-color);
+  border-radius: 0.25em;
   margin-bottom: 1em;
 }
 
-section.quiz-body #answer {
+section.quiz-body .q-a-container #answer {
   color: black;
   font-size: var(--quiz-body-fs);
   border: none;
   border-radius: 0.2em;
   padding: 0.15em 0.5em;
+  margin-bottom: 0.25em;
 }
 
 section.instructions {

@@ -1,7 +1,11 @@
+const instructionsPopover = document.getElementById("instructions-popover");
+
 const quizBody = document.querySelector("section.quiz-body");
 const qNumberElem = quizBody.querySelector("#q-number");
-const questionElem = quizBody.querySelector("#question");
-const answerElem = quizBody.querySelector("#answer");
+
+const qaContainer = quizBody.querySelector(".q-a-container");
+const questionElem = qaContainer.querySelector("#question");
+const answerElem = qaContainer.querySelector("#answer");
 
 const navigationBtnList = document.querySelectorAll(
   "section.quiz-navigator .navigation-buttons > button"
@@ -55,7 +59,11 @@ const colors = {
 let prevQuestionIdx = null;
 let currQuestionIdx = 0;
 
+instructionsPopover.showPopover();
 changeQuestion();
+
+disableBtn(saveNextBtn);
+disableBtn(submitBtn);
 
 // navigation buttons
 
@@ -67,6 +75,17 @@ navigationBtnList.forEach((navBtn, idx) => {
     currQuestionIdx = idx;
     changeQuestion();
   });
+});
+
+// answer elem on change
+
+answerElem.addEventListener("input", () => {
+  if (answerElem.value) {
+    enableBtn(saveNextBtn);
+    qaContainer.style.setProperty("--answer-status", '"(changes not saved)*"');
+  } else {
+    disableBtn(saveNextBtn);
+  }
 });
 
 // action buttons
@@ -81,6 +100,24 @@ nextBtn.addEventListener("click", () => {
 
 saveNextBtn.addEventListener("click", () => {
   saveNextAction();
+
+  if (!userAnswers.includes("")) {
+    enableBtn(submitBtn);
+  }
+});
+
+submitBtn.addEventListener("click", () => {
+  let correct = 0;
+  for (let idx = 0; idx < questions.length; idx++) {
+    if (questions[idx].answer === userAnswers[idx]) correct++;
+  }
+
+  console.log(correct);
+  if (correct === questions.length) {
+    alert("To the next level");
+  } else {
+    alert("All answers should be correct");
+  }
 });
 
 // changing question function
@@ -104,12 +141,26 @@ function nextAction() {
 function saveNextAction() {
   if (answerElem.value) {
     userAnswers[currQuestionIdx] = answerElem.value;
+    qaContainer.style.setProperty("--answer-status", "");
+
     if (currQuestionIdx !== questions.length - 1) {
       nextAction();
     } else {
       navigationBtnList[currQuestionIdx].style.background = colors.answered;
     }
   }
+}
+
+function disableBtn(btn) {
+  btn.style.opacity = "0.5";
+  btn.style.cursor = "not-allowed";
+  btn.disabled = true;
+}
+
+function enableBtn(btn) {
+  btn.style.opacity = "1";
+  btn.style.cursor = "default";
+  btn.disabled = false;
 }
 
 function changeQuestion() {
@@ -124,4 +175,7 @@ function changeQuestion() {
   qNumberElem.textContent = questions[currQuestionIdx].id + ".";
   questionElem.innerHTML = questions[currQuestionIdx].question;
   answerElem.value = userAnswers[currQuestionIdx];
+
+  disableBtn(saveNextBtn);
+  qaContainer.style.setProperty("--answer-status", "");
 }
