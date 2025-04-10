@@ -259,4 +259,6 @@ function generateRandom() {
   for (let i = 0; i < randNumb.length; i++) {
     questions[i] = allQuestions[randNumb[i]];
   }
+
+  console.log(questions);
 }
