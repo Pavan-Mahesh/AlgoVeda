@@ -23,7 +23,7 @@
       <img src="./assets/icons/IEEE-CS_LogoTM-white@2x.png" alt="ieee-cs" />
     </header>
 
-    <main class="quiz-container" style="display: none">
+    <main class="quiz-container">
       <section class="quiz-navigator">
         <div class="current-level">
           <div id="number"></div>
@@ -72,7 +72,7 @@
 
     <!-- Show only when when the participant goes to the level 7 -->
 
-    <main class="level7">
+    <main class="level7" style="display: none">
       <div class="content">
         <div class="bigger-text">
           You have successfully completed six rounds <br />
@@ -161,7 +161,12 @@
       <img src="./assets/info.png" alt="info" />
     </button>
 
-    <script src="./scripts/data.js"></script>
-    <script src="./scripts/quiz.js"></script>
+    <script>
+      if (!localStorage.getItem("teamStatus")) {
+        window.location.replace("/login.html");
+      }
+    </script>
+    <script type="module" src="./scripts/firebase.js"></script>
+    <script type="module" src="./scripts/quiz.js"></script>
   </body>
 </html>

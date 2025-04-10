@@ -139,6 +139,7 @@ section.quiz-body .q-a-container {
 }
 
 section.quiz-body .q-a-container #question {
+  width: 100%;
   min-height: 50%;
   overflow-y: auto;
 

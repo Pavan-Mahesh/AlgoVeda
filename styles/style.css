@@ -84,3 +84,8 @@ button {
     cursor: not-allowed;
   }
 }
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
