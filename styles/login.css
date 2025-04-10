@@ -48,6 +48,7 @@ form.login input {
 
 form.login button {
   color: black;
+  background-color: white;
   font-size: var(--fs-md);
   border: none;
   border-radius: 0.2em;

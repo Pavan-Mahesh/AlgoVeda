@@ -23,7 +23,7 @@
       <img src="./assets/icons/IEEE-CS_LogoTM-white@2x.png" alt="ieee-cs" />
     </header>
 
-    <main class="quiz-container">
+    <main class="quiz-container" style="display: none">
       <section class="quiz-navigator">
         <div class="current-level">
           <div id="number"></div>
@@ -70,15 +70,28 @@
       </section>
     </main>
 
-    <!-- popover elements -->
+    <!-- Show only when when the participant goes to the level 7 -->
 
-    <button
-      class="info-icon"
-      popovertarget="instructions-popover"
-      popovertargetaction="show"
-    >
-      <img src="./assets/info.png" alt="info" />
-    </button>
+    <main class="level7">
+      <div class="content">
+        <div class="bigger-text">
+          You have successfully completed six rounds <br />
+          and are now being redirected to HackerRank for <br />
+          Level 7: Competitive Programming.
+        </div>
+        <div class="smaller-text">
+          If you're Ready press the button below to start the round 7.
+        </div>
+        <button
+          onclick="document.location.replace('https://www.hackerrank.com/algoveda-competitive-programming')"
+          class="level7"
+        >
+          Level 7: Competitive Programming
+        </button>
+      </div>
+    </main>
+
+    <!-- popover elements -->
 
     <section class="instructions" id="instructions-popover" popover="manual">
       <div class="instructions-container">
@@ -130,10 +143,23 @@
         </ol>
       </div>
 
-      <button popovertarget="instructions-popover" popovertargetaction="hide">
+      <button
+        popovertarget="instructions-popover"
+        popovertargetaction="hide"
+        title="Hide instructions"
+      >
         <img src="./assets/close.png" alt="close" />
       </button>
     </section>
+
+    <button
+      class="info-icon"
+      popovertarget="instructions-popover"
+      popovertargetaction="show"
+      title="Show instructions"
+    >
+      <img src="./assets/info.png" alt="info" />
+    </button>
 
     <script src="./scripts/data.js"></script>
     <script src="./scripts/quiz.js"></script>
