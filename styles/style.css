@@ -89,3 +89,29 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+#preloader {
+  width: 3rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border: 0.3rem solid rgba(var(--light-color-code), 0.3);
+  border-top-color: var(--button-color);
+
+  animation: spin 1000ms linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

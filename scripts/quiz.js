@@ -5,15 +5,17 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 const instructionsPopover = document.getElementById("instructions-popover");
+const quizContainer = document.querySelector("main.quiz-container");
+const proloader = document.getElementById("preloader");
 
-const levelNumb = document.querySelector(
+const levelNumb = quizContainer.querySelector(
   "section.quiz-navigator .current-level #number"
 );
-const levelName = document.querySelector(
+const levelName = quizContainer.querySelector(
   "section.quiz-navigator .current-level #name"
 );
 
-const navigationBtnList = document.querySelectorAll(
+const navigationBtnList = quizContainer.querySelectorAll(
   "section.quiz-navigator .navigation-buttons > button"
 );
 
@@ -207,10 +209,13 @@ function changeQuestion() {
 async function changeLevel() {
   // after completing level 6
   if (currLevelIdx === 6) {
-    document.querySelector("main.quiz-container").style.display = "none";
+    quizContainer.style.display = "none";
     document.querySelector("main.level7").style.display = "";
     return;
   }
+
+  proloader.style.display = "";
+  quizContainer.style.display = "none";
 
   await get(ref(db, "level" + levels[currLevelIdx].level)).then((snapshot) => {
     if (snapshot.exists()) {
@@ -219,6 +224,9 @@ async function changeLevel() {
       console.log("No data found");
     }
   });
+
+  proloader.style.display = "none";
+  quizContainer.style.display = "";
 
   generateRandom();
 
