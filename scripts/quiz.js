@@ -148,11 +148,11 @@ submitBtn.addEventListener("click", () => {
   }
 
   if (correct === questionsPerLevel) {
-    alert("To the next level");
+    alert("Advancing to the next level!");
     currLevelIdx++;
     changeLevel();
   } else {
-    alert("All answers should be correct");
+    alert("Can't continue until every answer is right!");
   }
 });
 
