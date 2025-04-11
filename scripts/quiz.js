@@ -4,6 +4,8 @@ import {
   get,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
+const teamStatus = JSON.parse(localStorage.getItem("teamStatus"));
+
 const instructionsPopover = document.getElementById("instructions-popover");
 const quizContainer = document.querySelector("main.quiz-container");
 const proloader = document.getElementById("preloader");
@@ -81,7 +83,7 @@ let questions = [];
 
 let userAnswers = new Array(questionsPerLevel).fill("");
 
-let currLevelIdx = JSON.parse(localStorage.getItem("teamStatus")).currLevelIdx;
+let currLevelIdx = teamStatus.currLevelIdx;
 
 let prevQuestionIdx = null;
 let currQuestionIdx = 0;
@@ -208,7 +210,7 @@ function changeQuestion() {
 
 async function changeLevel() {
   // after completing level 6
-  if (currLevelIdx === 6) {
+  if (currLevelIdx >= 6) {
     quizContainer.style.display = "none";
     document.querySelector("main.level7").style.display = "";
     return;
@@ -217,16 +219,21 @@ async function changeLevel() {
   proloader.style.display = "";
   quizContainer.style.display = "none";
 
-  await get(ref(db, "level" + levels[currLevelIdx].level)).then((snapshot) => {
-    if (snapshot.exists()) {
-      allQuestions = snapshot.val();
-    } else {
-      console.log("No data found");
-    }
-  });
+  await get(ref(db, "level" + levels[currLevelIdx].level))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        allQuestions = snapshot.val();
 
-  proloader.style.display = "none";
-  quizContainer.style.display = "";
+        proloader.style.display = "none";
+        quizContainer.style.display = "";
+      } else {
+        console.log("No data found");
+      }
+    })
+    .catch((err) => {
+      alert("Fail to load questions, try again");
+      console.error("Error:", err.message);
+    });
 
   generateRandom();
 
@@ -249,11 +256,24 @@ async function changeLevel() {
 }
 
 function generateRandom() {
-  const randNumb = [];
+  let randNumb;
+  if (
+    localStorage.getItem("randNumb") &&
+    currLevelIdx === teamStatus.currLevelIdx
+  ) {
+    randNumb = JSON.parse(localStorage.getItem("randNumb"));
+  } else {
+    randNumb = [];
+    while (randNumb.length < questionsPerLevel) {
+      const rand = Math.floor(Math.random() * allQuestions.length);
+      if (!randNumb.includes(rand)) randNumb.push(rand);
+    }
 
-  while (randNumb.length < questionsPerLevel) {
-    const rand = Math.floor(Math.random() * allQuestions.length);
-    if (!randNumb.includes(rand)) randNumb.push(rand);
+    localStorage.setItem("randNumb", JSON.stringify(randNumb));
+    localStorage.setItem(
+      "teamStatus",
+      JSON.stringify({ ...teamStatus, currLevelIdx: currLevelIdx })
+    );
   }
 
   for (let i = 0; i < randNumb.length; i++) {
