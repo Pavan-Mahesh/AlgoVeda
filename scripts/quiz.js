@@ -138,21 +138,29 @@ saveNextBtn.addEventListener("click", () => {
 
 submitBtn.addEventListener("click", () => {
   let correct = 0;
+  let incorrectQuestions = [];
   for (let idx = 0; idx < questionsPerLevel; idx++) {
     if (
       questions[idx].answer.toLowerCase().replaceAll(" ", "") ===
       userAnswers[idx].toLowerCase().replaceAll(" ", "")
     ) {
       correct++;
+    } else {
+      incorrectQuestions.push(idx + 1);
     }
   }
 
   if (correct === questionsPerLevel) {
-    alert("Advancing to the next level!");
+    alert(
+      "Well done! You've answered all questions correctly. Advancing to the next level."
+    );
     currLevelIdx++;
     changeLevel();
   } else {
-    alert("Can't continue until every answer is right!");
+    alert(
+      "Oops! You need to get all answers correct before moving on. \nCheck these question(s): " +
+        incorrectQuestions.join(", ")
+    );
   }
 });
 
